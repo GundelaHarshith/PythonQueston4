@@ -1,0 +1,33 @@
+def is_magic(mat):
+    R = len(mat)
+   
+    sum = 0
+    magic = True
+    diag1sum = 0
+    diag2sum = 0
+    
+    for i in range(R):  # A for loop for row entries
+      rowsum = 0
+      colsum = 0
+    
+      for j in range(R):
+        if (i == 0):
+          sum += mat[i][j]
+        rowsum += mat[i][j]
+        colsum += mat[j][i]
+        if(j==i):
+          diag1sum += mat[i][j]
+        if(j+i == R-1):
+          diag2sum += mat[i][j]
+    
+      if (rowsum != sum or colsum != sum):
+        magic = False
+        break
+        
+    if (diag1sum != sum or diag2sum != sum):
+        magic = False
+    
+    if (magic):
+      return "YES"
+    else:
+      return "NO"
